@@ -41,3 +41,4 @@ def ResolMCQR(A,b):
 def ResolMCNP(A,b):
     X = "OUIIII"
     return X
+
