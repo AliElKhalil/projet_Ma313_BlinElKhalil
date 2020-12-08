@@ -1,3 +1,3 @@
-from 313_2021_tp4_project import *
+from Fonctions import *
 
-QSDFGHJKL
+Q,R = DecompositionGS(A)
