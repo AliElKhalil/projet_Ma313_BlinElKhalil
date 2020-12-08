@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
-#SALUUUUUUUUT
 import numpy as np
 
 
@@ -91,12 +89,12 @@ def Cholesky(A):
 
 def donnees_partie3():
     """ Fonction qui donne les données à traiter dans la partie 3
-    du projet. 
-    
+    du projet.
+
     ----------------
     Utilisation : x,y=donnes_partie3()
     """
-    
+
     x=np.array([ 3.58, -2.26,  1.17,  7.09,  1.3 , -4.82, -4.83,  1.53,  5.73,
        -3.44,  4.04,  2.99,  3.59, -4.66, -0.61,  0.67, -4.02, -1.91,
         6.58, -5.07,  5.18, -1.67, -2.6 ,  4.27,  4.  , -5.36, -2.1 ,
