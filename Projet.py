@@ -11,14 +11,16 @@ def ResolMCEN(A,b):
     return X
 
 def DecompositionGSr(A):
-    n,m=A.shape
-    if n !=m :
-        raise Exception('Matrice non carrée')
+    n,p=A.shape
+    if n !=p :
+        print ('Décomposition GS réduite')
+    if n < p :
+        raise Exception ("n doit être >= p")
 
-    Q=np.zeros((n,n))
-    R=np.zeros((n,n))
-    for j in range(n):
-        for i in range(j):
+    Q = np.zeros((n,p))
+    R = np.zeros((n,p))
+    for j in range(p):
+        for i in range(j,p):
             R[i,j]=Q[:,i]@A[:,j]
         w=A[:,j]
         for k in range(j):
