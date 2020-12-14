@@ -4,12 +4,6 @@ Created on Tue Dec  8 17:16:36 2020
 @author: aliel
 """
 
-"""
-Created on Tue Dec  8 17:16:36 2020
-
-@author: aliel
-"""
-
 import numpy as np
 from Projet_Partie_1 import *
 from Fonctions import *
