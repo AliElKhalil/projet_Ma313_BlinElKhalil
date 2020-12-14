@@ -1,4 +1,6 @@
 from Fonctions import *
+import numpy as np
+
 
 def ResolMCEN(A,b):
     B = np.dot(A.T,b)
@@ -44,5 +46,25 @@ def ResolMCQR(A,b):
 def ResolMCNP(A,b):
     X = "OUIIII"
     return X
+
+
+def DecompositionGSGenerale(A):
+    n,p=np.shape(A)
+    Q=np.zeros((n,p))
+    R=np.zeros((p,p))
+    R[0,0]=np.linalg.norm(A[:,0])    
+    Q[:,0]=(1/R[0,0])*A[:,0]
+    for j in range (1,p):
+        for i in range (1,j):
+            R[i,j]=np.vdot(A[:,j],Q[:,i])
+        w=A[:,j]
+        for k in range(j):
+            w=w-R[k,j]*Q[:,k]
+        norme=np.linalg.norm(w)
+        if norme ==0:
+            raise Exception('décomposition QR impossible : élément diagonle de R nul')
+        R[j,j]=norme
+        Q[:,j]=w/norme
+    return Q,R
 
 
