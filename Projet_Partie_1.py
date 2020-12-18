@@ -25,7 +25,7 @@ def DecompositionGSr(A):
     Q = np.zeros((n,p))
     R = np.zeros((n,p))
     for j in range(p):
-        for i in range(j,p):
+        for i in range(0,j):
             R[i,j]=Q[:,i]@A[:,j]
         w=A[:,j]
         for k in range(j):
@@ -37,25 +37,48 @@ def DecompositionGSr(A):
         Q[:,j]=w/norme
     return Q,R
 
-def ResolMCQR(A,b):
-    Qr,Rr = DecompositionGSr(A)
-    Taug = np.column_stack((Rr,np.dot(Qr.T,b)))
-    X = ResolutionSystTriSup(Taug)  # RrX = Qrtb
-    return X
+#def ResolMCQR(A,b):
+    #Qr,Rr = DecompositionGSr(A)
+    #Taug = np.column_stack((Rr,np.dot(Qr.T,b)))
+    #X = ResolutionSystTriSup(Taug)  # RrX = Qrtb
+    #Resreturn X
 
 def ResolMCNP(A,b):
-    X = "OUIIII"
-    return X
+    return np.linalg.lstsq(A,b)[0]
 
 
 def DecompositionGSGenerale(A):
+    """
+    
+
+    Parameters
+    ----------
+    A : Matrice 
+        Matrice que l'on souhaite décomposer sous la forme QR. 
+        De format (n,p), on peut avoir ici n=p, n>p et n<p.
+
+    Raises
+    ------
+    Exception
+        DESCRIPTION.
+
+    Returns
+    -------
+    Q : Matrice 
+        Q, de taille (n,p), vérifie Qt.Q=Ip, matrice identitée de taille p.
+        Attention : Q.Qt n'est pas nécessairement égale à In.
+    R : Matrice
+        Matrice triangulaire supérieure de taille p.
+
+    """
+    
     n,p=np.shape(A)
     Q=np.zeros((n,p))
     R=np.zeros((p,p))
     R[0,0]=np.linalg.norm(A[:,0])    
     Q[:,0]=(1/R[0,0])*A[:,0]
     for j in range (1,p):
-        for i in range (1,j):
+        for i in range (0,j):
             R[i,j]=np.vdot(A[:,j],Q[:,i])
         w=A[:,j]
         for k in range(j):
@@ -64,7 +87,11 @@ def DecompositionGSGenerale(A):
         if norme ==0:
             raise Exception('décomposition QR impossible : élément diagonle de R nul')
         R[j,j]=norme
-        Q[:,j]=w/norme
+        Q[:,j]=(1/norme)*w
     return Q,R
 
-
+def ResolMCQR(A,b):
+    Q,R=DecompositionGSGenerale(A)
+    Qt=Q.T
+    x=ResolTriSup(R,np.dot(Qt,b))
+    return x
