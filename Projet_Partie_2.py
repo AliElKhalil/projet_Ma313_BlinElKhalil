@@ -23,7 +23,7 @@ def SystemeExercice3():
     y=[2.8,-9.4,-4.5,3.8,-8.0,3.0,3.9,-3.5,1.3,-7.6]
     A=np.zeros((len(x),3))
     Y=np.zeros((len(x),1))
-    for i in (0,len(x)):
+    for i in range (0,len(x)):
         A[i]=[1,x[i],x[i]**2]
         Y[i]=y[i]
     return A,y
@@ -45,7 +45,7 @@ def ResultatExercice(k):
         A,b=SystemeExercice2()
         return ResolMCEN(A,b),ResolMCQR(A,b),ResolMCNP(A,b)
     elif k==3:
-        A,b= SystemeExercie3()
+        A,b= SystemeExercice3()
         return ResolMCEN(A,b),ResolMCQR(A,b),ResolMCNP(A,b)
     
 
