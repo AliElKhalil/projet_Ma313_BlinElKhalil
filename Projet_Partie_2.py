@@ -70,7 +70,7 @@ def VerificationMinimum():
                 n=np.linalg.norm(np.dot(A,x)-b)
                 if n<N:
                     c=False
-                    G.append((k,i))
+                    G.append((k,i,x))
     if G==[]:
         return True
     else :
