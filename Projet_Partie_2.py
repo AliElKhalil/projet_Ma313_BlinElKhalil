@@ -56,7 +56,6 @@ def VerificationMinimum():
     G=[]
     for k in [1,2,3]:
         for i in [0,1,2]:
-            print(k,i)
             c=True
             X=ResultatExercice(k)[i]
             A,b=SystemeExercice(k)
@@ -68,14 +67,29 @@ def VerificationMinimum():
                 x=X+rdm.uniform(0,e)
                 j+=1
                 n=np.linalg.norm(np.dot(A,x)-b)
-                if n<N:
+                if n-N<0:
                     c=False
-                    G.append((k,i,x))
+                    G.append((k,i,x,n-N))
     if G==[]:
         return True
     else :
         return False,G
                 
-                
+ 
+def test(k,i):
+    f=True
+    X=ResultatExercice(k)[i]
+    A,b=SystemeExercice(k)
+    N=np.linalg.norm(np.dot(A,X)-b)
+    p=np.shape(X)[0]
+    e=(10**-3)/(np.sqrt(p))
+    j=0
+    while j<=10**6 and f==True:
+        x=X+rdm.uniform(0,e)
+        j+=1
+        n=np.linalg.norm(np.dot(A,x)-b)
+        if n-N<0:
+            f=False
+    return f
             
             
