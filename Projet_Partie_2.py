@@ -91,5 +91,7 @@ def test(k,i):
         if n-N<0:
             f=False
     return f
+
+
             
             
