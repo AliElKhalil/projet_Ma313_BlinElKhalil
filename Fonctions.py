@@ -92,7 +92,7 @@ def donnees_partie3():
     du projet.
 
     ----------------
-    Utilisation : x,y=donnes_partie3()
+    Utilisation : x,y=donnees_partie3()
     """
 
     x=np.array([ 3.58, -2.26,  1.17,  7.09,  1.3 , -4.82, -4.83,  1.53,  5.73,
