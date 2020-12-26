@@ -11,6 +11,22 @@ import random as rdm
 from math import *
 
 def SystemeExercice(k):
+    """
+    
+
+    Parameters
+    ----------
+    k : integer
+        Numéro de l'exercice du quel on veut utiliser le système.
+
+    Returns
+    -------
+    TYPE
+        Matrice A du système Ax=b.
+    TYPE
+        Matrice b du système Ax=b.
+
+    """
     if k==1:
         A1=np.array([[1,2],[2,3],[-1,2]])
         b1=np.array([[12],[17],[6]])
