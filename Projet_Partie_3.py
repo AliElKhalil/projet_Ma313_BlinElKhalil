@@ -15,7 +15,6 @@ from Projet_Partie_1 import *
 
 def RegressionLineaireCercle(X,Y):
     """
-    
 
     Parameters
     ----------
@@ -27,7 +26,7 @@ def RegressionLineaireCercle(X,Y):
     Returns
     -------
     M : list
-        liste contenant la coordonnee en abscisse et en ordonnee du 
+        liste contenant la coordonnee en abscisse et en ordonnee du
         centre et rayon du cercle de regression lineaire.
 
     """
@@ -60,7 +59,7 @@ def CourbePoint(X,Y):
     """
     plt.scatter(X,Y)
     plt.show()
-    
+
 def TraceCercle(a,b,r):
     """
     Fonction qui trace un cercle, avec un centre et un rayon donnés.
@@ -84,10 +83,10 @@ def TraceCercle(a,b,r):
     y=r*np.sin(theta)+b
     plt.plot(x,y)
     plt.show()
-    
+
 def ComparaisonPointsRegression(X,Y):
     """
-    Fonction qui trace le nuage de points et la regressions linéaire 
+    Fonction qui trace le nuage de points et la regressions linéaire
     d'une liste de points
 
     Parameters
@@ -95,7 +94,7 @@ def ComparaisonPointsRegression(X,Y):
     X : List
         Coordonnees en abscisse des points a etudier.
     Y : List
-        Coordonnees en ordonee des points a etudier.
+        Coordonnees en ordonnee des points a etudier.
 
     Returns
     -------

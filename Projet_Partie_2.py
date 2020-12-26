@@ -11,7 +11,7 @@ import random as rdm
 from math import *
 
 def SystemeExercice(k):
-    if k==1: 
+    if k==1:
         A1=np.array([[1,2],[2,3],[-1,2]])
         b1=np.array([[12],[17],[6]])
         return A1,b1
@@ -30,9 +30,8 @@ def SystemeExercice(k):
         return A,y
 
 
-def ResultatExercice(k): 
+def ResultatExercice(k):
     """
-    
 
     Parameters
     ----------
@@ -42,8 +41,8 @@ def ResultatExercice(k):
     Returns
     -------
     tuple
-        résultat du problème des moindres carrés selon la méthode d'équation 
-        normale, avec une décomposition QR et avec la fonction linalg.lstsq 
+        résultat du problème des moindres carrés selon la méthode d'équation
+        normale, avec une décomposition QR et avec la fonction linalg.lstsq
         de numpy.
 
     """
@@ -51,7 +50,7 @@ def ResultatExercice(k):
     return ResolMCEN(A,b),ResolMCQR(A,b),ResolMCNP(A,b)
 
 
-    
+
 def VerificationMinimum():
     G=[]
     for k in [1,2,3]:
@@ -74,24 +73,3 @@ def VerificationMinimum():
         return True
     else :
         return False,G
-                
- 
-def test(k,i):
-    f=True
-    X=ResultatExercice(k)[i]
-    A,b=SystemeExercice(k)
-    N=np.linalg.norm(np.dot(A,X)-b)
-    p=np.shape(X)[0]
-    e=(10**-3)/(np.sqrt(p))
-    j=0
-    while j<=10**6 and f==True:
-        x=X+rdm.uniform(0,e)
-        j+=1
-        n=np.linalg.norm(np.dot(A,x)-b)
-        if n-N<0:
-            f=False
-    return f
-
-
-            
-            
