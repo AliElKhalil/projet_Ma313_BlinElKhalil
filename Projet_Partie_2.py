@@ -99,25 +99,25 @@ def Comparer_temps():
     TMCQR = [] #Temps de calcul moindres carres par decompo QR reduite
     TMCNP = [] #Temps de calcul moindres carres numpy
     K = []
-    for k in (1,4,1):
+    for k in range (1,4):
         # Generation des matrices du TD connues
-        A,b = SystemeExercice(k)
+        A,B = SystemeExercice(k)
 
         # Determination du temps de calcul pour chaque méthode
         t0 = time.perf_counter()
-        X1 = ResolMCEN(A,b)
+        X1 = ResolMCEN(A,B)
         t1 = time.perf_counter()
 
         a = t1 - t0
 
         t2 = time.perf_counter()
-        X2 = ResolMCQR(A,b)
+        X2 = ResolMCQR(A,B)
         t3 = time.perf_counter()
 
         b = t3 - t2
 
         t4 = time.perf_counter()
-        X3 = ResolMCNP(A,b)
+        X3 = ResolMCNP(A,B)
         t5 = time.perf_counter()
 
         c = t5 - t4
@@ -141,5 +141,3 @@ def Comparer_temps():
 
     plt.show()
 
-if __name__ == '__main__':
-    Comparer_temps()
