@@ -9,6 +9,9 @@ from Projet_Partie_1 import *
 from Fonctions import *
 import random as rdm
 from math import *
+import time
+import matplotlib.pyplot as plt
+
 
 def SystemeExercice(k):
     if k==1:
@@ -73,3 +76,54 @@ def VerificationMinimum():
         return True
     else :
         return False,G
+
+
+def Comparer_temps():
+    TMCEN = [] #Temps de calcul moindres carres equations normales
+    TMCQR = [] #Temps de calcul moindres carres par decompo QR reduite
+    TMCNP = [] #Temps de calcul moindres carres numpy
+    K = []
+    for k in (1,4,1):
+        # Generation des matrices du TD connues
+        A,b = SystemeExercice(k)
+
+        # Determination du temps de calcul pour chaque méthode
+        t0 = time.perf_counter()
+        X1 = ResolMCEN(A,b)
+        t1 = time.perf_counter()
+
+        a = t1 - t0
+
+        t2 = time.perf_counter()
+        X2 = ResolMCQR(A,b)
+        t3 = time.perf_counter()
+
+        b = t3 - t2
+
+        t4 = time.perf_counter()
+        X3 = ResolMCNP(A,b)
+        t5 = time.perf_counter()
+
+        c = t5 - t4
+
+        # Ajout valeurs du temps de calcul pour cette itération k
+        TMCEN.append(a)
+        TMCQR.append(b)
+        TMCNP.append(c)
+        K.append(k)
+
+    plt.ylabel("Temps de calcul (s)")
+
+    plt.xlabel("Matrices des exercices k")
+
+    plt.scatter(K,TMCEN,label = "Equations normales")
+    plt.scatter(K,TMCQR,label = "Décomposition QR réduite")
+    plt.scatter(K,TMCNP,label = "Numpy")
+
+    plt.legend(loc = "upper right")
+    plt.title("Comparaison du temps de calcul en fonction des matrices utilisées \n", fontsize=12)
+
+    plt.show()
+
+if __name__ == '__main__':
+    Comparer_temps()
