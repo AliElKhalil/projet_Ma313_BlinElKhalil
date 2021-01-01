@@ -210,11 +210,13 @@ def TracerDroiteRegression(X,Y):
     mx=min(X)
     My=max(Y)
     my=min(Y)
-    p = -np.linspace(mx-1,Mx+1,1000)
-    q = np.linspace(my-1,My+1,1000)
-    x,y = np.meshgrid(p,q)
-    eqn = a*x+b
-    Z = y
-    plt.contour(x,y,eqn,[Z])
+    p = np.linspace(mx,Mx,1000)
+    x= []
+    y=[]
+    for k in p :
+        x.append(k)
+        y.append(a*k+b)
+    plt.plot(x,y)
     plt.show()
+        
     
