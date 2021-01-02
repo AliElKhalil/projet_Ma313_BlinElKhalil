@@ -192,7 +192,10 @@ def tracerEllipseRegression(X,Y):
     plt.contour(x,y,eqn,[Z])
     plt.show()
     
-def RegressionLineaireAffine(X,Y):
+
+
+
+def RegressionLineairePolynomial(X,Y,p):
     j=np.shape(X)[0]
     if np.shape(X)==(j,):
         X=[X]
@@ -201,22 +204,60 @@ def RegressionLineaireAffine(X,Y):
         Y=[Y]
     Xt=np.transpose(X)
     Yt=np.transpose(Y)
-    M=np.concatenate(Xt,np.ones(np.shape(Xt)))
+    M=np.ones(np.shape(Xt))
+    F=np.ones(np.shape(Xt))
+    for i in range(1,p+1):
+        F=F*Xt
+        M=np.concatenate(F,M,axis=1)
     return ResolMCQR(M,Yt)
 
-def TracerDroiteRegression(X,Y):
-    [[a],[b]]=RegressionLineaireAffine(X, Y)
-    Mx=max(X)
-    mx=min(X)
-    My=max(Y)
-    my=min(Y)
-    p = np.linspace(mx,Mx,1000)
-    x= []
+def TracerPolynomeRegression(X,Y,p):
+    x=np.linspace(min(X),max(X),10000)
     y=[]
-    for k in p :
-        x.append(k)
-        y.append(a*k+b)
+    R=RegressionLineairePolynomial(X, Y, p)
+    for i in x:
+        P=0
+        for j in range (0,p+1):
+            P=P+R[j]**j
+        y.append(P)
     plt.plot(x,y)
-    plt.show()
-        
+    plt.plot(X,Y)
+    
+    
+def ResolMCSVD(A,b):
+    S_p_i=1/np.linalg.svd(A)[1]
+    U_e=np.matrix.H(np.linalg.svd(A)[0])
+    V=np.matrix.H(np.linalg.svd(A)[2])
+    A_p_i=np.dot(V,S_p_i,U_e)
+    x=np.dot(A_p_i,b)
+    return x
+
+
+#def RegressionLineaireEllipseV2(X,Y):
+    #j=np.shape(X)[0]
+    #if np.shape(X)==(j,):
+    #    X=[X]
+    #j=np.shape(Y)[0]
+    #if np.shape(Y)==(j,):
+    #    Y=[Y]
+    #Xt=np.transpose(X)
+    #Yt=np.transpose(Y)
+    #D=np.concatenate(Xt,Yt,np.ones(np.shape(Xt)),Xt*Xt,np.sqrt(2)*Xt*Yt,Yt*Yt)
+    #R=DecompositionGSGenerale(D)[1]
+    #p=np.shape(R)[1]
+    #R22=R[p-3:][:,p-3:]
+    #w=ResolMCSVD(R22,np.zeros((1,3)))    
+    #return w
+
+def Donnees_parabole():
+    X=[0.1,0.2,0.3,0.4,0.5]
+    Y=[0.225,0.209,0.200,0.221,0.259]
+    return X,Y
+
+
+
+    
+            
+    
+
     
