@@ -89,7 +89,7 @@ def RegressionLineairePolynomiale(X,Y,p):
     for i in range(1,p+1):
         F=F*Xt
         M=np.concatenate((M,F),axis=1)
-    return ResolMCSVD(M,Yt)
+    return ResolMCNP(M,Yt)
 
 def ComparaisonPolynomeRegression(X,Y,p):
     x=np.linspace(min(X),max(X),10000)
