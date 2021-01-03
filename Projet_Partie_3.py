@@ -11,7 +11,7 @@ from Fonctions import *
 import random as rdm
 from math import *
 from Projet_Partie_1 import *
-from Projet_PArtie_4 import *
+from Projet_Partie_4 import *
 
 def RegressionLineaireCercle(X,Y):
     """
