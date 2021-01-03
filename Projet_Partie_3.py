@@ -11,7 +11,7 @@ from Fonctions import *
 import random as rdm
 from math import *
 from Projet_Partie_1 import *
-from Projet_PArtie_4 import *
+from Projet_Partie_4 import *
 
 def RegressionLineaireCercle(X,Y):
     """
@@ -91,6 +91,7 @@ def TraceCercle(a,b,r,plot=False):
     y=r*np.sin(theta)+b
     if plot==True:
         plt.plot(x,y)
+        plt.axis('equal')
         plt.show()
     else :
         return x,y
@@ -120,6 +121,7 @@ def ComparaisonPointsRegression(X,Y):
     plt.title("Comparaison des points avec la regression linéaire")
     plt.legend()
     plt.legend(loc='upper left')
+    plt.axis('equal')
     plt.show()
 
 

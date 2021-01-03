@@ -195,4 +195,5 @@ def Surprise():
     plt.axis('equal')
     plt.axis('off')
     plt.show()
-Surprise()
+if __name__ == '__main__':
+    Surprise()
