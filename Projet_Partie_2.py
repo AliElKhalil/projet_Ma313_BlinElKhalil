@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 def SystemeExercice(k):
     """
-    
+
 
     Parameters
     ----------
@@ -140,4 +140,3 @@ def Comparer_temps():
     plt.title("Comparaison du temps de calcul en fonction des matrices utilisées \n", fontsize=12)
 
     plt.show()
-

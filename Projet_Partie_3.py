@@ -121,19 +121,8 @@ def ComparaisonPointsRegression(X,Y):
     plt.legend()
     plt.legend(loc='upper left')
     plt.show()
-    
+
 
 def ResolutionPartie3():
     X,Y=donnees_partie3()
     ComparaisonPointsRegression(X, Y)
-    
-    
-
-
-
-
-    
-            
-    
-
-    

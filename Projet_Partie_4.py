@@ -11,6 +11,7 @@ from Fonctions import *
 import random as rdm
 from math import *
 from Projet_Partie_1 import *
+import winsound
 
 
 def RegressionLineaireEllipse(X,Y):
@@ -24,7 +25,7 @@ def RegressionLineaireEllipse(X,Y):
     M=ResolMCSVD(A,B)
     return M
 
- 
+
 def TraceEllipse(a,b,alpha,beta,teta):
     c=max(a,b)
     gamma=max(abs(alpha),abs(beta))
@@ -45,9 +46,9 @@ def TraceEllipse(a,b,alpha,beta,teta):
     plt.contour(X,Y,eqn,[Z])
     plt.grid()
     plt.show()
-    
-    
-   
+
+
+
 def TracerEllipseRegression(X,Y):
     M=RegressionLineaireEllipse(X,Y)
     A=M[0][0]
@@ -71,7 +72,7 @@ def TracerEllipseRegression(X,Y):
     plt.scatter(alpha,beta)
     plt.contour(x,y,eqn,[Z])
     plt.show()
-    
+
 
 
 
@@ -102,8 +103,8 @@ def ComparaisonPolynomeRegression(X,Y,p):
         y.append(P)
     plt.plot(x,y)
     plt.scatter(X,Y)
-    
-    
+
+
 def ResolMCSVD(A,b):
     """
     Fonction qui résout le problème des moindres carrés en utilisant
@@ -145,10 +146,53 @@ def ResolMCSVD(A,b):
     #R=DecompositionGSGenerale(D)[1]
     #p=np.shape(R)[1]
     #R22=R[p-3:][:,p-3:]
-    #w=ResolMCSVD(R22,np.zeros((1,3)))    
+    #w=ResolMCSVD(R22,np.zeros((1,3)))
     #return w
 
 def Donnees_parabole():
     X=[0.1,0.2,0.3,0.4,0.5]
     Y=[0.225,0.209,0.200,0.221,0.259]
     return X,Y
+
+def Surprise():
+
+    #Petite musique "Au clair de la lune"
+    noire = 400  # ms
+    blanche = 800
+    ronde = 1200
+
+    freq_do = 262  # Hz
+    freq_re = 294
+    freq_mi = 330
+
+    winsound.Beep(freq_do, noire)
+    winsound.Beep(freq_do, noire)
+    winsound.Beep(freq_do, noire)
+    winsound.Beep(freq_re, noire)
+    winsound.Beep(freq_mi, blanche)
+    winsound.Beep(freq_re, blanche)
+    winsound.Beep(freq_do, noire)
+    winsound.Beep(freq_mi, noire)
+    winsound.Beep(freq_re, noire)
+    winsound.Beep(freq_re, noire)
+    winsound.Beep(freq_do, ronde)
+
+    #Sapin
+    x = [0.25, 0.25, 1.25, 0.5, 1, 0.25, 0.6, 0, -0.6, -0.25, -1, -0.5, -1.25, -0.25, -0.25, 0.25]
+    y = [0, 0.5, 0.5, 1, 1, 1.5, 1.5, 2, 1.5 , 1.5, 1, 1, 0.5, 0.5, 0, 0]
+    plt.plot(x, y, '-', color = "green", lw = 2)
+
+    #Boules
+    plt.scatter([1.25],[0.5], 60, color ='red', zorder = 3)
+    plt.scatter([-1.25],[0.5], 100, color ='darkorange', zorder = 3)
+    plt.scatter([1],[1], 100, color ='dodgerblue', zorder = 3)
+    plt.scatter([-1],[1], 60, color ='violet', zorder = 3)
+    plt.scatter([0.6],[1.5], 60, color ='springgreen', zorder = 3)
+    plt.scatter([-0.6],[1.5], 100, color ='gold', zorder = 3)
+
+    #Graph
+    plt.title("Bonnes fêtes ! :D (Ali & Marianne)")
+    plt.axis('equal')
+    plt.axis('off')
+    plt.show()
+Surprise()
