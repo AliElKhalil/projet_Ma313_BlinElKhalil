@@ -156,27 +156,6 @@ def Donnees_parabole():
 
 def Surprise():
 
-    #Petite musique "Au clair de la lune"
-    noire = 400  # ms
-    blanche = 800
-    ronde = 1200
-
-    freq_do = 262  # Hz
-    freq_re = 294
-    freq_mi = 330
-
-    winsound.Beep(freq_do, noire)
-    winsound.Beep(freq_do, noire)
-    winsound.Beep(freq_do, noire)
-    winsound.Beep(freq_re, noire)
-    winsound.Beep(freq_mi, blanche)
-    winsound.Beep(freq_re, blanche)
-    winsound.Beep(freq_do, noire)
-    winsound.Beep(freq_mi, noire)
-    winsound.Beep(freq_re, noire)
-    winsound.Beep(freq_re, noire)
-    winsound.Beep(freq_do, ronde)
-
     #Sapin
     x = [0.25, 0.25, 1.25, 0.5, 1, 0.25, 0.6, 0, -0.6, -0.25, -1, -0.5, -1.25, -0.25, -0.25, 0.25]
     y = [0, 0.5, 0.5, 1, 1, 1.5, 1.5, 2, 1.5 , 1.5, 1, 1, 0.5, 0.5, 0, 0]
@@ -194,6 +173,33 @@ def Surprise():
     plt.title("Bonnes fêtes ! :D (Ali & Marianne)")
     plt.axis('equal')
     plt.axis('off')
-    plt.show()
+    plt.show()    
+
+    #Petite musique "Au clair de la lune"
+    noire = 300  # ms
+    blanche = 600
+    ronde = 1200
+
+    freq_do = 262  # Hz
+    freq_re = 294
+    freq_mi = 330
+    freq_si = 248
+    freq_la = 220
+    freq_sol = 392
+ 
+    winsound.Beep(freq_si, noire)
+    winsound.Beep(freq_si, noire)
+    winsound.Beep(freq_si, blanche)
+    winsound.Beep(freq_si, noire)
+    winsound.Beep(freq_si, noire)
+    winsound.Beep(freq_si, blanche)
+    winsound.Beep(freq_si, noire)
+    winsound.Beep(freq_re, noire)
+    winsound.Beep(freq_sol, noire)
+    winsound.Beep(freq_la, noire)
+    winsound.Beep(freq_si, ronde)
+    winsound.Beep(freq_do)
+
+    
 if __name__ == '__main__':
     Surprise()
