@@ -154,7 +154,9 @@ def Donnees_parabole():
     Y=[0.225,0.209,0.200,0.221,0.259]
     return X,Y
 
-def Surprise():
+def Surprise(musique = 1):
+
+    musique = int(input(" Entrez 1 pour 'Vive le vent' ou 2 pour 'Au clair de la lune' :"))
 
     #Sapin
     x = [0.25, 0.25, 1.25, 0.5, 1, 0.25, 0.6, 0, -0.6, -0.25, -1, -0.5, -1.25, -0.25, -0.25, 0.25]
@@ -173,33 +175,68 @@ def Surprise():
     plt.title("Bonnes fêtes ! :D (Ali & Marianne)")
     plt.axis('equal')
     plt.axis('off')
-    plt.show()    
+    plt.show()
 
     #Petite musique "Au clair de la lune"
     noire = 300  # ms
+    noirep = 400
     blanche = 600
+    blanchep = 700
     ronde = 1200
+    croche = 200
 
     freq_do = 262  # Hz
     freq_re = 294
     freq_mi = 330
     freq_si = 248
     freq_la = 220
-    freq_sol = 392
- 
-    winsound.Beep(freq_si, noire)
-    winsound.Beep(freq_si, noire)
-    winsound.Beep(freq_si, blanche)
-    winsound.Beep(freq_si, noire)
-    winsound.Beep(freq_si, noire)
-    winsound.Beep(freq_si, blanche)
-    winsound.Beep(freq_si, noire)
-    winsound.Beep(freq_re, noire)
-    winsound.Beep(freq_sol, noire)
-    winsound.Beep(freq_la, noire)
-    winsound.Beep(freq_si, ronde)
-    winsound.Beep(freq_do)
+    freq_sol = 196
 
-    
+    if musique == 1:
+        # "Vive le vent"
+        winsound.Beep(freq_si, noire)
+        winsound.Beep(freq_si, noire)
+        winsound.Beep(freq_si, blanche)
+        winsound.Beep(freq_si, noire)
+        winsound.Beep(freq_si, noire)
+        winsound.Beep(freq_si, blanche)
+        winsound.Beep(freq_si, noire)
+        winsound.Beep(freq_re, noire)
+        winsound.Beep(freq_sol, noire)
+        winsound.Beep(freq_la, noire)
+        winsound.Beep(freq_si, ronde)
+
+        winsound.Beep(freq_do, noire)
+        winsound.Beep(freq_do, noire)
+        winsound.Beep(freq_do, noirep)
+        winsound.Beep(freq_do, croche)
+        winsound.Beep(freq_do, noire)
+        winsound.Beep(freq_si, noire)
+        winsound.Beep(freq_si, noirep)
+        winsound.Beep(freq_si, croche)
+        winsound.Beep(freq_si, croche)
+        winsound.Beep(freq_re, noire)
+        winsound.Beep(freq_re, noire)
+        winsound.Beep(freq_do, noire)
+        winsound.Beep(freq_la, noire)
+        winsound.Beep(freq_sol, blanchep)
+
+    elif musique == 2:
+        # "Au clair de la lune"
+        winsound.Beep(freq_do, noire)
+        winsound.Beep(freq_do, noire)
+        winsound.Beep(freq_do, noire)
+        winsound.Beep(freq_re, noire)
+        winsound.Beep(freq_mi, blanche)
+        winsound.Beep(freq_re, blanche)
+        winsound.Beep(freq_do, noire)
+        winsound.Beep(freq_mi, noire)
+        winsound.Beep(freq_re, noire)
+        winsound.Beep(freq_re, noire)
+        winsound.Beep(freq_do, ronde)
+
+    else:
+        print(":(")
+
 if __name__ == '__main__':
     Surprise()
