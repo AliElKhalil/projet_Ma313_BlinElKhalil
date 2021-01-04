@@ -118,7 +118,7 @@ def ComparaisonPointsRegression(X,Y):
     plt.plot(x,y,label="régression linéaire")
     plt.scatter(a,b,label="centre du cercle")
     plt.scatter(X,Y,label="points étudiés")
-    plt.title("Comparaison des points avec la regression linéaire")
+    plt.title("Comparaison des points avec la régression linéaire")
     plt.legend()
     plt.legend(loc='upper left')
     plt.axis('equal')
@@ -128,3 +128,6 @@ def ComparaisonPointsRegression(X,Y):
 def ResolutionPartie3():
     X,Y=donnees_partie3()
     ComparaisonPointsRegression(X, Y)
+
+if __name__ == '__main__':
+    ResolutionPartie3()
